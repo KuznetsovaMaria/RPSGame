@@ -43,13 +43,13 @@ function getPlayerChoice() {
 
 function compareChoices(computerChoice, playerChoice) {
     if (computerChoice === playerChoice) {
-        console.log('A tie');
+        return 'tie';
     } else if (computerChoice === 'R' && playerChoice === 'S' ||
     computerChoice === 'P' && playerChoice === 'R' ||
     computerChoice === 'S' && playerChoice === 'P') {
-        console.log(`Computer won! ${computerChoice} beats ${playerChoice}`);
+        return 'computer';
     } else {
-        console.log(`Player won! ${playerChoice} beats ${computerChoice}`);
+        return 'player';
     }
 }
 
@@ -57,9 +57,6 @@ function compareChoices(computerChoice, playerChoice) {
 function caseInsensitive(text) {
     return text.toUpperCase();
 }
-
-
-
 
 // make a 5 round game
 function playGame() {
@@ -81,13 +78,33 @@ function playGame() {
         // call the comparing function with new arguments
         const comparison = compareChoices(computerChoice, playerChoice);
 
+        //output the result of the current round and count the wins
+        if (comparison === 'tie') {
+            console.log(`A tie`);
+        } else if (comparison === 'computer') {
+            computerScore++;
+            console.log(`Computer won! ${computerChoice} beats ${playerChoice}`);
+        } else {
+            playerScore++;
+            console.log(`Player won! ${playerChoice} beats ${computerChoice}`);
+        }
+
         //print a divider (empty) line
         console.log('');
+    }
+
+    //display the final result of the game
+    if (computerScore === playerScore) {
+        console.log(`The game has ended with a tie`);
+    } else if (computerScore > playerScore) {
+        console.log(`Computer is the ultimate winner!`)
+    } else {
+        console.log(`Player is the ultimate winner`);
     }
 }
 
 let game = playGame();
 
-// output the winner (done with log in the compare function)
+
 
 
