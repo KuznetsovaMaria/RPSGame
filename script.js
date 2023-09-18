@@ -47,9 +47,9 @@ function compareChoices(computerChoice, playerChoice) {
     } else if (computerChoice === 'R' && playerChoice === 'S' ||
     computerChoice === 'P' && playerChoice === 'R' ||
     computerChoice === 'S' && playerChoice === 'P') {
-        console.log('Computer won!');
+        console.log(`Computer won! ${computerChoice} beats ${playerChoice}`);
     } else {
-        console.log('Player won!');
+        console.log(`Player won! ${playerChoice} beats ${computerChoice}`);
     }
 }
 
@@ -71,3 +71,5 @@ console.log(`Computer: ${computerChoice}`);
 compareChoices(computerChoice, playerChoice);
 
 // output the winner (done with log in the compare function)
+
+
