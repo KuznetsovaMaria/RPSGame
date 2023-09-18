@@ -22,10 +22,7 @@ let convertComputerNumToValue = function(number) {
             return 'S';
     }
 }
-// assign the computer choice process (functions) to a variable for future 
-// reference
-let computerChoice = convertComputerNumToValue(getComputerChoice());
-console.log(`Computer: ${computerChoice}`);
+
 
 // player's choice:
 //     ask for input:
@@ -34,10 +31,6 @@ console.log(`Computer: ${computerChoice}`);
 function getPlayerChoice() {
     return prompt('R/P/S?', 'R');
 }
-
-// store the player choice process (function) in a variable for future reference
-let playerChoice = getPlayerChoice();
-console.log(`Player: ${playerChoice}`);
 
 // compare the values:
 //     A tie if identical choices
@@ -59,6 +52,20 @@ function compareChoices(computerChoice, playerChoice) {
         console.log('Player won!');
     }
 }
+
+// make the player input case insensitive
+function caseInsensitive(text) {
+    return text.toUpperCase();
+}
+
+// store the player choice process (function) in a variable for future reference
+let playerChoice = caseInsensitive(getPlayerChoice());
+console.log(`Player: ${playerChoice}`);
+
+// assign the computer choice process (functions) to a variable for future 
+// reference
+let computerChoice = convertComputerNumToValue(getComputerChoice());
+console.log(`Computer: ${computerChoice}`);
 
 // call the comparing function with new arguments
 compareChoices(computerChoice, playerChoice);
