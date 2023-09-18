@@ -58,17 +58,35 @@ function caseInsensitive(text) {
     return text.toUpperCase();
 }
 
-// store the player choice process (function) in a variable for future reference
-let playerChoice = caseInsensitive(getPlayerChoice());
-console.log(`Player: ${playerChoice}`);
 
-// assign the computer choice process (functions) to a variable for future 
-// reference
-let computerChoice = convertComputerNumToValue(getComputerChoice());
-console.log(`Computer: ${computerChoice}`);
 
-// call the comparing function with new arguments
-compareChoices(computerChoice, playerChoice);
+
+// make a 5 round game
+function playGame() {
+
+    //count computer and player wins in one game to determine the ultimate winner
+    let computerScore = 0;
+    let playerScore = 0;
+
+    for (let gameNumber = 0; gameNumber < 5; gameNumber++) {
+        // store the player choice process (function) in a variable for future reference
+        let playerChoice = caseInsensitive(getPlayerChoice());
+        console.log(`Player: ${playerChoice}`);
+
+        // assign the computer choice process (functions) to a variable for future 
+        // reference
+        let computerChoice = convertComputerNumToValue(getComputerChoice());
+        console.log(`Computer: ${computerChoice}`);
+
+        // call the comparing function with new arguments
+        const comparison = compareChoices(computerChoice, playerChoice);
+
+        //print a divider (empty) line
+        console.log('');
+    }
+}
+
+let game = playGame();
 
 // output the winner (done with log in the compare function)
 
