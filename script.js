@@ -62,10 +62,12 @@ function caseInsensitive(text) {
 function playGame() {
 
     //count computer and player wins in one game to determine the ultimate winner
+    //count games
     let computerScore = 0;
     let playerScore = 0;
+    let gamesLeft = 5;
 
-    for (let gameNumber = 0; gameNumber < 5; gameNumber++) {
+    while (gamesLeft > 0) {
         // store the player choice process (function) in a variable for future reference
         let playerChoice = caseInsensitive(getPlayerChoice());
         console.log(`Player: ${playerChoice}`);
@@ -84,22 +86,34 @@ function playGame() {
         } else if (comparison === 'computer') {
             computerScore++;
             console.log(`Computer won! ${computerChoice} beats ${playerChoice}`);
+            //if one of them wins three games, there's no need to play two more, we announce
+            //the winner and reduce the number of games left to play to zero
+            //thus ending the game 
+            if (computerScore >= 3) {
+                console.log('Computer has won more than half the games, the winner is decided');
+                gamesLeft = 0;
+            }
         } else {
             playerScore++;
             console.log(`Player won! ${playerChoice} beats ${computerChoice}`);
+            if (playerScore >= 3) {
+                console.log('Player has won more than half the games, the winner is decided');
+                gamesLeft = 0;
+            }
         }
 
         //print a divider (empty) line
         console.log('');
+        gamesLeft -= 1;
     }
 
     //display the final result of the game
     if (computerScore === playerScore) {
         console.log(`The game has ended with a tie`);
     } else if (computerScore > playerScore) {
-        console.log(`Computer is the ultimate winner!`)
+        console.log(`Computer is the ultimate winner with ${computerScore} wins against ${playerScore} player's losses`)
     } else {
-        console.log(`Player is the ultimate winner`);
+        console.log(`Player is the ultimate winner with ${playerScore} wins and ${computerScore} computer's losses`);
     }
 }
 
